@@ -21,9 +21,10 @@
 			$query=$this->db->get('tu');
 			return $query;
 		}
-		public function cek_sesi(){
-			$this->db->select('waktu');
+		public function cek_sesi($nim){
+			$this->db->select('*');
 			$this->db->from('krs');
+			$this->db->where('nim', $nim);
 			$this->db->join('kelas', 'kelas.id_kelas=krs.id_kelas');
 			$query=$this->db->get();
 			return $query;

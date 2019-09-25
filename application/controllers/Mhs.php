@@ -22,8 +22,10 @@
 			$this->load->view('mhs/_footer');
 		}
 		public function sesi(){
-			$cek_sesi=$this->Proses->cek_sesi()->row();
-			$cek=count($cek_sesi);
+			$nim=$this->session->userdata('user');
+			$cek_sesi=$this->Proses->cek_sesi($nim)->row();
+			$hitung=$this->Proses->cek_sesi($nim);
+			$cek=$hitung->num_rows();
 			if($cek>0){
 				redirect('mhs/pmatkul/'.$cek_sesi->waktu);
 			}
