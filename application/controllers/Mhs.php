@@ -50,10 +50,12 @@
 		public function pmatkul($sesi){
 			$user=$this->session->userdata('user');
 			$get_user=$this->Proses->get_user($user)->row();
+			$getmatkul=$this->Proses->get_matkul();
 			$data=array(
 				'judul'=>'Pilih Matkul',
 				'user'=>$get_user,
-				'menu'=>'pmatkul'
+				'menu'=>'pmatkul',
+				'matkul'=>$getmatkul->result()
 			);
 			$this->load->view('mhs/_header', $data);
 			$this->load->view('mhs/page/pmatkul');

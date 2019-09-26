@@ -29,5 +29,8 @@
 			$query=$this->db->get();
 			return $query;
 		}
+		public function get_matkul(){
+			return $this->db->get('matkul');
+		}
 	}
  ?>

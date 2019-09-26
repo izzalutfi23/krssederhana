@@ -28,7 +28,11 @@ Sisa SKS : 3<br>
 	<?=form_open('mhs/cari');?>
 		<select name="cari_matkul">
 			<option value="#">Pilih</option>
-			<option value="#">Kalkulus</option>
+			<?php 
+				foreach ($matkul as $m => $row) {
+			 ?>
+			<option value="#"><?=$row->nama_matkul;?> [<?=$row->sks;?>]</option>
+			<?php } ?>
 		</select>
 		<input type="submit" name="search" value="Cari">
 	<?=form_close();?>
@@ -51,7 +55,7 @@ Sisa SKS : 3<br>
 			<td>07.00-08.40</td>
 			<td>Senin</td>
 			<td>
-				<a href="#"><button>Hapus</button></a>
+				<a href="#"><button>Tambah</button></a>
 			</td>
 		</tr>
 
