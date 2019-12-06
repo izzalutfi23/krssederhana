@@ -29,8 +29,22 @@
 			$query=$this->db->get();
 			return $query;
 		}
-		public function get_matkul(){
+		public function get_matkul($wkt){
+			$this->db->where('kelas.waktu', $wkt);
+			$this->db->join('kelas', 'matkul.id_matkul=kelas.id_matkul');
 			return $this->db->get('matkul');
+		}
+		public function get_kelas($param = null){
+			$this->db->select('*');
+			$this->db->from('kelas');
+			if($param!=null){
+				$this->db->where('kelas.waktu', $param['waktu']);
+				$this->db->where('kelas.id_matkul', $param['id_matkul']);
+			}
+			$this->db->join('matkul', 'kelas.id_matkul=matkul.id_matkul');
+			$this->db->join('waktu', 'kelas.waktu=waktu.waktu');
+			$query = $this->db->get();
+			return $query;
 		}
 	}
  ?>

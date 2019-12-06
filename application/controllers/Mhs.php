@@ -48,14 +48,37 @@
 			$this->load->view('mhs/_footer');
 		}
 		public function pmatkul($sesi){
+			$wkt = $this->uri->segment('3');
 			$user=$this->session->userdata('user');
 			$get_user=$this->Proses->get_user($user)->row();
-			$getmatkul=$this->Proses->get_matkul();
+			$getmatkul=$this->Proses->get_matkul($wkt);
 			$data=array(
 				'judul'=>'Pilih Matkul',
 				'user'=>$get_user,
 				'menu'=>'pmatkul',
-				'matkul'=>$getmatkul->result()
+				'matkul'=>$getmatkul->result(),
+				'kelas'=>null
+			);
+			$this->load->view('mhs/_header', $data);
+			$this->load->view('mhs/page/pmatkul');
+			$this->load->view('mhs/_footer');
+		}
+		public function cari(){
+			$param = array(
+				'waktu'=>$_POST['waktu'],
+				'id_matkul'=>$_POST['id_matkul']
+			);
+			$user=$this->session->userdata('user');
+			$get_user=$this->Proses->get_user($user)->row();
+			$getmatkul=$this->Proses->get_matkul($param['waktu']);
+			$getkelas = $this->Proses->get_kelas($param);
+			$data=array(
+				'judul'=>'Pilih Matkul',
+				'user'=>$get_user,
+				'menu'=>'pmatkul',
+				'matkul'=>$getmatkul->result(),
+				'kelas' => $getkelas->result(),
+				'waktu' => $param['waktu']
 			);
 			$this->load->view('mhs/_header', $data);
 			$this->load->view('mhs/page/pmatkul');

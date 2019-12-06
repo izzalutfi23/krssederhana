@@ -58,7 +58,7 @@
 		.ikrs th,td{
 			padding: 5px;
 		}
-		select[name="cari_matkul"]{
+		select[name="id_matkul"]{
 			width: 80%;
 			height: 30px;
 			float: left;
