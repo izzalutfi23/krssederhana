@@ -46,5 +46,17 @@
 			$query = $this->db->get();
 			return $query;
 		}
+		public function get_krs(){
+			$this->db->join('kelas', 'krs.id_kelas=kelas.id_kelas');
+			$this->db->join('matkul', 'kelas.id_matkul=matkul.id_matkul');
+			return $this->db->get('krs');
+		}
+		public function add_k($data){
+			$param = array(
+				'nim' => $data['nim'],
+				'id_kelas' => $data['id_kelas']
+			);
+			$this->db->insert('krs', $param);
+		}
 	}
  ?>

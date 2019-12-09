@@ -11,17 +11,21 @@ Sisa SKS : 3<br>
 			<th>Hari</th>
 			<th>Aksi</th>
 		</tr>
+		<?php 
+			$no=1;
+			foreach ($krs as $kr) {
+		 ?>
 		<tr>
-			<td>1</td>
-			<td>Kalkulus 1</td>
-			<td>A11.4321</td>
-			<td>07.00-08.40</td>
-			<td>Senin</td>
+			<td><?=$no++;?></td>
+			<td><?=$kr->nama_matkul;?></td>
+			<td><?=$kr->id_kelas;?></td>
+			<td><?=$kr->jam;?></td>
+			<td><?=$kr->hari;?></td>
 			<td>
 				<a href="#"><button>Hapus</button></a>
 			</td>
 		</tr>
-
+		<?php } ?>
 	</table>
 </div>
 <div class="ksright">
@@ -67,7 +71,12 @@ Sisa SKS : 3<br>
 			<td><?=$kel->jam;?></td>
 			<td><?=$kel->hari;?></td>
 			<td>
-				<a href="#"><button>Tambah</button></a>
+				<?=form_open('mhs/add_krs');?>
+					<input type="hidden" name="nim" value="<?=$user->nim;?>">
+					<input type="hidden" name="id_kelas" value="<?=$kel->id_kelas;?>">
+					<input type="hidden" name="waktu" value="<?=$waktu;?>">
+					<input type="submit" name="add" value="Tambah">
+				<?=form_close();?>
 			</td>
 		</tr>
 		<?php } ?>
