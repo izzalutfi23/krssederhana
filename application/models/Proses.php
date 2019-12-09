@@ -58,5 +58,9 @@
 			);
 			$this->db->insert('krs', $param);
 		}
+		public function del_krs($id){
+			$this->db->where('id_krs', $id);
+			$this->db->delete('krs');
+		}
 	}
  ?>

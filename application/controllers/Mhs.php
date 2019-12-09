@@ -94,5 +94,11 @@
 			$this->Proses->add_k($input);
 			redirect('mhs/pmatkul/'.$waktu);
 		}
+		public function del_krs(){
+			$waktu = $this->uri->segment('4');
+			$id = $this->uri->segment('3');
+			$this->Proses->del_krs($id);
+			redirect('mhs/pmatkul/'.$waktu);
+		}
 	}
  ?>
