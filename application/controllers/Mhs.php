@@ -52,7 +52,7 @@
 			$user=$this->session->userdata('user');
 			$get_user=$this->Proses->get_user($user)->row();
 			$getmatkul=$this->Proses->get_matkul($wkt);
-			$getkrs = $this->Proses->get_krs();
+			$getkrs = $this->Proses->get_krs($user);
 			$data=array(
 				'judul'=>'Pilih Matkul',
 				'user'=>$get_user,
@@ -74,7 +74,7 @@
 			$get_user=$this->Proses->get_user($user)->row();
 			$getmatkul=$this->Proses->get_matkul($param['waktu']);
 			$getkelas = $this->Proses->get_kelas($param);
-			$getkrs = $this->Proses->get_krs();
+			$getkrs = $this->Proses->get_krs($user);
 			$data=array(
 				'judul'=>'Pilih Matkul',
 				'user'=>$get_user,

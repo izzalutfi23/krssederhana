@@ -2,6 +2,9 @@ Silahkan pilih Matkul !<br>
 Total SKS : 22<br>
 Sisa SKS : 3<br>
 <div class="ksleft">
+	<?php 
+		if($krs!=null){
+	 ?>
 	<table class="ikrs" border="1">
 		<tr>
 			<th>No</th>
@@ -27,6 +30,7 @@ Sisa SKS : 3<br>
 		</tr>
 		<?php } ?>
 	</table>
+	<?php } ?>
 </div>
 <div class="ksright">
 	<?=form_open('mhs/cari');?>
@@ -79,6 +83,22 @@ Sisa SKS : 3<br>
 				<?=form_close();?>
 			</td>
 		</tr>
+		<?php 
+			foreach ($krs as $krk){
+				if($kel->id_kelas==$krk->id_kelas && $kel->hari==$krk->hari && $kel->jam==$krk->jam){
+		 ?>
+		<tr>
+			<td colspan="6">
+				<?php foreach ($krs as $krt){ ?>
+					<?php if($kel->id_kelas==$krt->id_kelas){ ?>
+						Tabrakan dengan kelas <?=$kel->nama_matkul;?>
+					<?php }else if($kel->hari==$krt->hari && $kel->jam==$krt->jam){ ?>
+						Tabrakan dengan hari <?=$kel->hari;?> pada jam <?=$kel->jam;?>
+					<?php } ?>
+				<?php } ?>
+			</td>
+		</tr>
+		<?php }} ?>
 		<?php } ?>
 	</table>
 	<?php } ?>
