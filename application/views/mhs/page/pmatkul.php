@@ -1,6 +1,6 @@
 Silahkan pilih Matkul !<br>
-Total SKS : 22<br>
-Sisa SKS : 3<br>
+Total SKS : 5<br>
+Sisa SKS : <?=$user->kuota_sks;?><br>
 <div class="ksleft">
 	<?php 
 		if($krs!=null){
@@ -77,6 +77,7 @@ Sisa SKS : 3<br>
 			<td>
 				<?=form_open('mhs/add_krs');?>
 					<input type="hidden" name="nim" value="<?=$user->nim;?>">
+					<input type="hidden" name="sks" value="<?=$kel->sks;?>">
 					<input type="hidden" name="id_kelas" value="<?=$kel->id_kelas;?>">
 					<input type="hidden" name="waktu" value="<?=$waktu;?>">
 					<input type="submit" name="add" value="Tambah">
@@ -85,7 +86,7 @@ Sisa SKS : 3<br>
 		</tr>
 		<?php 
 			foreach ($krs as $krk){
-				if($kel->id_kelas==$krk->id_kelas && $kel->hari==$krk->hari && $kel->jam==$krk->jam){
+				if($kel->id_kelas==$krk->id_kelas || $kel->hari==$krk->hari && $kel->jam==$krk->jam){
 		 ?>
 		<tr>
 			<td colspan="6">

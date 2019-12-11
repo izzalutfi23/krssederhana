@@ -90,8 +90,9 @@
 		}
 		public function add_krs(){
 			$waktu = $_POST['waktu'];
+			$sks = $_POST['sks'];
 			$input = $this->input->post(null, TRUE);
-			$this->Proses->add_k($input);
+			$this->Proses->add_k($input, $sks);
 			redirect('mhs/pmatkul/'.$waktu);
 		}
 		public function del_krs(){

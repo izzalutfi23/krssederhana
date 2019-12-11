@@ -52,11 +52,14 @@
 			$this->db->join('matkul', 'kelas.id_matkul=matkul.id_matkul');
 			return $this->db->get('krs');
 		}
-		public function add_k($data){
+		public function add_k($data, $sks){
 			$param = array(
 				'nim' => $data['nim'],
 				'id_kelas' => $data['id_kelas']
 			);
+			$this->db->set('kuota_sks', 'kuota_sks - '. (int)$sks, FALSE);
+			$this->db->where('nim', $data['nim']);
+			$this->db->update('mhs');
 			$this->db->insert('krs', $param);
 		}
 		public function del_krs($id){
