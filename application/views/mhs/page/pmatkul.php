@@ -80,7 +80,14 @@ Sisa SKS : <?=$user->kuota_sks;?><br>
 					<input type="hidden" name="sks" value="<?=$kel->sks;?>">
 					<input type="hidden" name="id_kelas" value="<?=$kel->id_kelas;?>">
 					<input type="hidden" name="waktu" value="<?=$waktu;?>">
-					<input type="submit" name="add" value="Tambah">
+					<?php 
+					foreach ($krs as $krk){
+						if($kel->id_kelas==$krk->id_kelas || $kel->hari==$krk->hari && $kel->jam==$krk->jam){
+							?>
+								<input type="submit" style="background-color: red;" name="add" value="Tambah">
+					<?php }else{ ?>
+								<input type="submit" name="add" value="Tambah">
+					<?php }} ?>
 				<?=form_close();?>
 			</td>
 		</tr>
