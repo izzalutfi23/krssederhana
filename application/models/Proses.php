@@ -31,6 +31,7 @@
 		}
 		public function get_matkul($wkt){
 			$this->db->where('kelas.waktu', $wkt);
+			$this->db->group_by('matkul.nama_matkul');
 			$this->db->join('kelas', 'matkul.id_matkul=kelas.id_matkul');
 			return $this->db->get('matkul');
 		}
@@ -62,7 +63,11 @@
 			$this->db->update('mhs');
 			$this->db->insert('krs', $param);
 		}
-		public function del_krs($id){
+		public function del_krs($id, $nim, $sks){
+			$this->db->set('kuota_sks', 'kuota_sks + '. (int)$sks, FALSE);
+			$this->db->where('nim', $nim);
+			$this->db->update('mhs');
+
 			$this->db->where('id_krs', $id);
 			$this->db->delete('krs');
 		}

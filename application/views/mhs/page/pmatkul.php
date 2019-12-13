@@ -25,7 +25,7 @@ Sisa SKS : <?=$user->kuota_sks;?><br>
 			<td><?=$kr->jam;?></td>
 			<td><?=$kr->hari;?></td>
 			<td>
-				<a onclick="return confirm('Hapus KRS?')" href="<?=base_url('mhs/del_krs/'.$kr->id_krs.'/'.$this->uri->segment('3'))?>"><button>Hapus</button></a>
+				<a onclick="return confirm('Hapus KRS?')" href="<?=base_url('mhs/del_krs/'.$kr->id_krs.'/'.$kr->waktu.'/'.$kr->nim.'/'.$kr->sks)?>"><button>Hapus</button></a>
 			</td>
 		</tr>
 		<?php } ?>

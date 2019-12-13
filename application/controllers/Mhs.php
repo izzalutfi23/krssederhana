@@ -98,7 +98,9 @@
 		public function del_krs(){
 			$waktu = $this->uri->segment('4');
 			$id = $this->uri->segment('3');
-			$this->Proses->del_krs($id);
+			$nim = $this->uri->segment('5');
+			$sks = $this->uri->segment('6');
+			$this->Proses->del_krs($id, $nim, $sks);
 			redirect('mhs/pmatkul/'.$waktu);
 		}
 	}
