@@ -80,15 +80,13 @@ Sisa SKS : <?=$user->kuota_sks;?><br>
 					<input type="hidden" name="sks" value="<?=$kel->sks;?>">
 					<input type="hidden" name="id_kelas" value="<?=$kel->id_kelas;?>">
 					<input type="hidden" name="waktu" value="<?=$waktu;?>">
-					<?php 
+					<button type="submit" <?php 
 					foreach ($krs as $krk){
 						if($kel->id_kelas==$krk->id_kelas || $kel->hari==$krk->hari && $kel->jam==$krk->jam){
-							?>
-								<input type="submit" style="background-color: red;" name="add" value="Tambah">
-					<?php }else{ ?>
-								<input type="submit" name="add" value="Tambah">
-					<?php }} ?>
-				<?=form_close();?>
+					 ?>
+					 disabled="disabled"
+					 	<?php }} ?>
+					 >Tambah</button>
 			</td>
 		</tr>
 		<?php 
@@ -106,7 +104,8 @@ Sisa SKS : <?=$user->kuota_sks;?><br>
 				<?php } ?>
 			</td>
 		</tr>
+		<?php }} if($user->kuota_sks<$kel->sks){ ?>
+			<tr style="border-top : 0.1px solid #FFF;"><td colspan="6">kurang</td></tr>
 		<?php }} ?>
-		<?php } ?>
 	</table>
 	<?php } ?>

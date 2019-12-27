@@ -76,8 +76,8 @@
 <body>
 Selamat datang <b><?=$user->nama;?></b><br><br>
 <ul class="menu">
-	<a href="<?=base_url('mhs/sesi')?>"><li <?php if($menu=='pmatkul'){ ?>class="active-menu"<?php } ?>>Input/Edit KRS</li></a>
-	<a href="#"><li>KRS Sementara</li></a>
+	<a href="<?=base_url('mhs/sesi')?>"><li <?php if($this->uri->segment('2')=='pmatkul' || $this->uri->segment('2')=='sesi'){ ?>class="active-menu"<?php } ?>>Input/Edit KRS</li></a>
+	<a href="<?=base_url('mhs/krssementara')?>"><li <?php if($this->uri->segment('2')=='krssementara'){ ?>class="active-menu"<?php } ?>>KRS Sementara</li></a>
 	<a href="<?=base_url('login/logout')?>"><li>Logout</li></a>
 </ul>
 <hr>

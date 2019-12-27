@@ -103,5 +103,18 @@
 			$this->Proses->del_krs($id, $nim, $sks);
 			redirect('mhs/pmatkul/'.$waktu);
 		}
+		public function krssementara(){
+			$user=$this->session->userdata('user');
+			$get_user=$this->Proses->get_user($user)->row();
+			$getkrs = $this->Proses->get_krs($user);
+			$data=array(
+				'krs' => $getkrs->result(),
+				'user' => $get_user,
+				'menu' => null
+			);
+			$this->load->view('mhs/_header', $data);
+			$this->load->view('mhs/page/krssementara');
+			$this->load->view('mhs/_footer');
+		}
 	}
  ?>
