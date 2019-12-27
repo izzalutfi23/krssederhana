@@ -15,6 +15,7 @@
 			$pass=md5($_POST['password']);
 			$query=$this->Proses->cek($user,$pass)->row();
 			$cek=count($query);
+			$this->session->set_userdata('mhs', $user);
 			if($cek>0){
 				$this->session->set_userdata('user', $user);
 				redirect('mhs');

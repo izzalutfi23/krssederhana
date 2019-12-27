@@ -1,4 +1,5 @@
-<?php 	
+<?php
+
 	class Mhs extends CI_Controller{
 		function __construct(){
 			parent::__construct();
@@ -56,7 +57,6 @@
 			$data=array(
 				'judul'=>'Pilih Matkul',
 				'user'=>$get_user,
-				'menu'=>'pmatkul',
 				'matkul'=>$getmatkul->result(),
 				'kelas'=>null,
 				'krs' => $getkrs->result()
@@ -78,7 +78,6 @@
 			$data=array(
 				'judul'=>'Pilih Matkul',
 				'user'=>$get_user,
-				'menu'=>'pmatkul',
 				'matkul'=>$getmatkul->result(),
 				'kelas' => $getkelas->result(),
 				'waktu' => $param['waktu'],
@@ -108,9 +107,9 @@
 			$get_user=$this->Proses->get_user($user)->row();
 			$getkrs = $this->Proses->get_krs($user);
 			$data=array(
+				'judul' => 'KRS Sementara',
 				'krs' => $getkrs->result(),
 				'user' => $get_user,
-				'menu' => null
 			);
 			$this->load->view('mhs/_header', $data);
 			$this->load->view('mhs/page/krssementara');
